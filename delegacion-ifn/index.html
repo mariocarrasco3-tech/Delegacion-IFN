@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delegación IFN 2026 · Comisión de Fiestas Patrias</title>
+<meta name="description" content="Portal interno de integrantes de la delegación — Instituto Fermín Naudeau">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======================= PANTALLA DE ACCESO ======================= -->
+<div id="pantalla-acceso" class="pantalla-acceso">
+  <div class="cinta-tricolor"></div>
+
+  <div class="acceso-contenedor">
+    <form id="formulario-acceso" class="tarjeta-acceso" autocomplete="off">
+      <img src="logo.jpg" alt="Escudo del Instituto Fermín Naudeau" class="logo-grande">
+      <p class="eyebrow">Instituto Fermín Naudeau</p>
+      <h1 class="titulo-portal">Integrantes de la<br>Delegación 2026</h1>
+      <p class="subtitulo-portal">Comisión de Fiestas Patrias</p>
+
+      <div class="campo-clave">
+        <label for="entrada-clave">Contraseña de acceso</label>
+        <input type="password" id="entrada-clave" class="entrada-clave" placeholder="Ingrese su contraseña" required>
+      </div>
+
+      <button type="submit" class="boton-primario" id="boton-ingresar">Ingresar al portal</button>
+      <p id="mensaje-error" class="mensaje-error"></p>
+
+      <p class="nota-acceso">Este portal contiene información personal de los estudiantes de la delegación. Uso exclusivo de la Comisión de Fiestas Patrias 2026.</p>
+    </form>
+  </div>
+
+  <div class="cinta-tricolor"></div>
+  <p class="pie-acceso">Instituto Fermín Naudeau — Delegación de Fiestas Patrias 2026</p>
+</div>
+
+<!-- ======================= APP PRINCIPAL ======================= -->
+<div id="app" class="app oculto">
+  <header class="barra-superior">
+    <div class="barra-superior-interior">
+      <img src="logo.jpg" alt="Logo IFN" class="logo-mini">
+      <div class="titulo-barra">
+        <h1>Delegación 2026</h1>
+        <p>Comisión de Fiestas Patrias</p>
+      </div>
+      <span id="insignia-rol" class="insignia-rol lectura">Solo lectura</span>
+      <button id="boton-salir" class="boton-salir">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div class="banner-estado">
+    <p id="aviso-estado" class="aviso oculto"></p>
+  </div>
+
+  <main class="contenido">
+
+    <div id="franja-herramientas" class="franja-herramientas oculto">
+      <button id="boton-agregar" class="boton-herramienta">＋ Agregar estudiante</button>
+      <button id="boton-importar-inicial" class="boton-herramienta">⇪ Importar datos iniciales (164)</button>
+      <button id="boton-exportar" class="boton-herramienta">⬇ Descargar respaldo (JSON)</button>
+    </div>
+
+    <section class="panel-busqueda">
+      <div class="fila-busqueda">
+        <div class="envoltura-buscador">
+          <span class="icono-buscar">🔍</span>
+          <input type="text" id="entrada-buscador" class="entrada-buscador" placeholder="Buscar estudiante por nombre, grado o sección…">
+        </div>
+        <span id="contador-resultados" class="contador-resultados"></span>
+      </div>
+      <div id="fila-chips" class="fila-chips"></div>
+
+      <div class="fila-filtro-avanzado">
+        <select id="selector-campo-filtro" class="selector-filtro">
+          <option value="">Filtrar por otra pregunta…</option>
+          <option value="grado">Grado que cursa</option>
+          <option value="jornada">Jornada escolar</option>
+          <option value="seguro_educativo">Seguro educativo</option>
+          <option value="tipo_sangre">Tipo de sangre</option>
+          <option value="anios_banda">Años en la banda</option>
+        </select>
+        <select id="selector-valor-filtro" class="selector-filtro oculto"></select>
+        <span id="conteo-filtro-avanzado" class="conteo-filtro-avanzado oculto"></span>
+      </div>
+    </section>
+
+    <section id="cuadricula" class="cuadricula">
+      <div class="cargando">Cargando integrantes…</div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ======================= MODAL DETALLE / EDICIÓN ======================= -->
+<div id="fondo-modal" class="fondo-modal oculto">
+  <div class="modal-detalle" role="dialog" aria-modal="true" aria-labelledby="modal-nombre">
+    <div class="modal-cabecera">
+      <button id="boton-cerrar-modal" class="boton-cerrar" aria-label="Cerrar">✕</button>
+      <h2 id="modal-nombre" class="modal-nombre"></h2>
+      <div id="modal-meta" class="modal-meta"></div>
+    </div>
+    <div id="modal-cuerpo" class="modal-cuerpo"></div>
+  </div>
+</div>
+
+<!-- Firebase (SDK modular vía CDN, sin necesidad de build/npm) -->
+<script type="module" src="script.js"></script>
+</body>
+</html>
