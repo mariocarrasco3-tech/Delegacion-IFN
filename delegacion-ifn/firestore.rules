@@ -1,0 +1,17 @@
+rules_version = '2';
+
+// El control de acceso (código de edición vs. código de solo lectura) se
+// hace en la app (index.html/script.js), igual que en Portal IFN y Aula
+// Virtual. Estas reglas solo abren la base de datos al proyecto; no hay
+// Firebase Authentication de por medio.
+//
+// Cómo aplicarlas: Firebase Console → tu proyecto (ifn-delegacion) →
+// Firestore Database → pestaña "Reglas" → pega este contenido → Publicar.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /estudiantes/{id} {
+      allow read, write: if true;
+    }
+  }
+}
